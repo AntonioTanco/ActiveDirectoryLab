@@ -1,7 +1,7 @@
 # 🖳 Active Directory Lab
 
 <h2>Description</h2>
-<b></b>Setup and Configured Active Directory Domain Service in Windows Server 2019 in a virtual enviroment using Oracle VM VirtualBox. This project involved creating/promoting the server to a Domain Controller, Installing the Remote Acess Role to configurate NAT to allows clients who joined the domain to connect to the public internet via an External NIC, Installing and Configure DHCP to define an IP address range, IP Lease and define the DC as the router and DNS used by clients. A Powershell script was used to programatically create 1000+ users in Active Directory for testing purposes. </b>
+<b></b>Setup and Configured Active Directory Domain Service in Windows Server 2019 in a virtual enviroment using Oracle VM VirtualBox. This project involved creating/promoting the server to a Domain Controller, Installing the Remote Acess Role to configurate NAT to allows clients who joined the domain to connect to the public internet via an External NIC, Installing and Configuring DHCP to define an IP address range, IP Lease Duration and define the DC as the router and DNS used by clients. A Powershell script was used to programatically create 1000+ users in Active Directory for testing purposes. </b>
 <br />
 
 <h2>Languages and Software Used</h2>
