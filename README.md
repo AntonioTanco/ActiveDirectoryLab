@@ -1,7 +1,7 @@
 # 🖳 Active Directory Lab
 
 <h2>Description</h2>
-<b></b>Setup and Configured Active Directory Domain Service in Windows Server 2019 in a virtual enviroment using Oracle VM VirtualBox. This project involved creating/promoting the server to a Domain Controller, Installing the Remote Acess Role to configurate NAT to allows clients who joined the domain to connect to the public internet via an External NIC, Installing and Configuring DHCP to define an IP address range, IP Lease Duration and define the DC as the router and DNS used by clients. A Powershell script was used to programatically create 1000+ users in Active Directory for testing purposes. </b>
+<b>Installed and configured Windows Active Directory to allow a “client” (Virtual Machine) to connect to a domain controller via a private network / internal NIC (VPN). RAS and NAT are configured in a way which allows DHCP to locate the Active Directory Domain server through DNS all while handling IP Address Assignments for the host and IP Address leasing. </b>
 <br />
 
 <h2>Languages and Software Used</h2>
@@ -17,6 +17,60 @@
 <h2>Project walk-through:</h2>
 
 <p align="center">
-Network Topology <br/>
+Network Topology<br/>
+<p align="center">
+Diagram of how the network was architected for this lab<br/>
 <img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/2a3e708d-df18-4cfb-a48a-f19c5b14c6a3"/>
 <br />
+
+<p align="center">
+VirtualBox Network Configuration for Windows Server 2019 VM<br/>
+<p align="center">
+Enabled two NIC's on the VM: One thats connected to the public internet (DHCP - IP Addressing from ISP) and one internal NIC that our "client" will use to communicate with our Domain Controller over the virtual network<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/901633c6-7ab8-40b6-94c6-a956306b8d03"/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/7b78930a-0a0d-4906-b3ab-c39eca8d588b"/>
+<br />
+
+After booting into Windows Server 2019 and going through the initial install I've identified the internal NIC and configured the IPv4 properties to assign a static IP of 172.16.0.1, Subnet Mask: 255.255.0.0 and a default Gateway: 127.0.0.1 in accordance with the network diagram which will be used later in the project to configure RAS/NAT, DNS and DHCP.
+<br />
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/281a3085-dcb5-4beb-9c0b-fc5349359441"/>
+<br />
+
+<p align="center">
+Installing and Configuring Active Directory Domain Services<br/>
+<p align="center">
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/fd9b733e-1b1e-406c-a4c2-943ccb81c024"/>
+
+After AD DS role was installed I then promoted the server to a Domain Controller with the following Configuration:
+
+- <b>New AD Forest</b>
+  - Target Server: DOMAIN-CONTROLLER 
+  - ROOT NAME: mydomain.com
+- <b>Domain Controller Options</b>
+  - Forest Funtional Level: Windows Server 2016
+  - Domain Functional Level: Windows Server 2016
+ 
+  Domain Controller Capabilities:
+  - Enabled: Domain Name System (DNS) Server
+  - Enabled: Global Catalog (GC)
+  - Disabled: Read only domain controller (RODC)
+
+- <b>Set an DSRM Password</b>
+- <b>PATHS left the as default</b>
+
+
+
+
+
+
+
+<h2>Hard Skills Demonstrated </h2>
+- Windows Server 2019 
+- Active Directory  
+- Active Directory Domain Service (AD DC)
+
+- Creating a Domain
+- Setup/Configure RAS and NAT
+- Setup/Configuring DNS & DHCP
+- PowerShell Scripting
+- Networking
