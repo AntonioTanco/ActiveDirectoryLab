@@ -71,6 +71,13 @@ Creating a new account | Domain Admin member<br/>
 <p align="center">
 <img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/d4e44f49-b5c6-4e8b-a9bf-9725caddc8ed"/>
 
+<p align="center">
+Logging as Atanco_HDA | Newly Created Domain Admin<br/>
+<p align="center">
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/365ffac0-6b89-4af2-bc27-18d4c88a5eee"/>
+
+<h2> Networking: </h2>
+
 
 
 
