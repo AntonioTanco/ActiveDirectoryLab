@@ -58,6 +58,20 @@ After AD DS role was installed I then promoted the server to a Domain Controller
 - <b>Set an DSRM Password</b>
 - <b>PATHS left the as default</b>
 
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/b96d8a4f-65d7-421f-a3c1-d3ee73ad30a4"/>
+
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/619ca6f1-0eb6-4f27-bf9e-d092b8de4391"/>
+
+After configuring AD DS, I've created 3 OU's. The IT OU will house IT servers + Help Desk Users OU which will house accounts with admin privileges.
+
+So I created an new account for myself that I will promote to domain admin that I will login from now on.
+
+<p align="center">
+Creating a new account | Domain Admin member<br/>
+<p align="center">
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/d4e44f49-b5c6-4e8b-a9bf-9725caddc8ed"/>
+
+
 
 
 
