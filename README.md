@@ -1,20 +1,20 @@
 # 🖳 Active Directory Lab
 
-<h2>Description</h2>
+<h1>Description</h1>
 <b>Installed and configured Windows Active Directory to allow a “client” (Virtual Machine) to connect to a domain controller via a private network / internal NIC (VPN). RAS and NAT are configured in a way which allows DHCP to locate the Active Directory Domain server through DNS all while handling IP Address Assignments for the host and IP Address leasing. </b>
 <br />
 
-<h2>Languages and Software Used</h2>
+<h1>Languages and Software Used</h1>
 
 - <b>PowerShell</b> 
 - <b>Oracle VM VirtualBox</b>
 
-<h2>Virtual Environments Used </h2>
+<h1>Virtual Environments Used </h1>
 
 - <b>Windows 10 Pro</b>
 - <b>Windows Server 2019 (GUI)<b>
 
-<h2>Project walk-through:</h2>
+<h1>Project walk-through:</h1>
 
 <p align="center">
 Network Topology<br/>
@@ -76,8 +76,28 @@ Logging as Atanco_HDA | Newly Created Domain Admin<br/>
 <p align="center">
 <img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/365ffac0-6b89-4af2-bc27-18d4c88a5eee"/>
 
-<h2> Networking: </h2>
+<h1> Networking: </h1>
 
+After configurating our domain controller we now need to setup and configure our networking to allow for our "clients" to communicate with our domain controller. 
+
+- <b>Server Roles Installed/Configured:</b>
+  - Remote Access
+    - DirectAccess and VPN (RAS)
+    - Routing
+
+  - DHCP
+      - DNS
+      - IP Address Scope
+      - IP Lease Duration
+      - Router
+
+<h2> Remote Access </h2>
+
+<p align="center">
+Installing Remote Access
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/1179dbb7-a43d-4ace-846f-cac97347e808"/>
+<br />
 
 
 
