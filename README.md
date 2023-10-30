@@ -99,6 +99,11 @@ Installing Remote Access
 <img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/1179dbb7-a43d-4ace-846f-cac97347e808"/>
 <br />
 
+<p align="center">
+Installing Remote Access
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/2a2b201e-8621-44ba-8d6d-8ec15fa05068"/>
+<br />
 
 
 
