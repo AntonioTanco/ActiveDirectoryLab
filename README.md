@@ -100,14 +100,64 @@ Installing Remote Access
 <br />
 
 <p align="center">
-Remote Access - Service Roles
+Installing Remote Access - Service Roles
 <br/>
 <img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/2a2b201e-8621-44ba-8d6d-8ec15fa05068"/>
 <br />
 
+<p align="center">
+Configurating Remote Access - Network Address Transalation (NAT)
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/6405a161-0d2f-49ee-9401-ee8494aa64ce"/>
+<br />
 
+<p align="center">
+Configurating Remote Access - Network Address Transalation (NAT)
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/6405a161-0d2f-49ee-9401-ee8494aa64ce"/>
+<br />
 
+![Domain Controller - Configuring Remote Access Role - 3](https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/3194d547-daa0-419a-ab68-a8f0a8a1dbec)
 
+Choosing the "Public" NIC will allow our "clients" to access the PUBLIC internet assuming we properly configure DHCP to use our domain controller as a router (default gateway) for all clients connected via the private network or internal NIC.
+
+<h2> DHCP </h2>
+
+<p align="center">
+Installing DHCP - Server Role
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/2d8299e0-dda6-49dc-8229-69bda8c32693"/>
+<br />
+
+<p align="center">
+Configurating DHCP - Defining an IP Address Scope
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/6554a6e5-aa30-4f3c-85eb-2da72a56ef8e"/>
+<br />
+
+<p align="center">
+Configurating DHCP - Defining a lease duration
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/399e7ab6-f95c-466e-825c-e38b6368705c"/>
+<br />
+
+<p align="center">
+Configurating DHCP - Specifying a router 
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/03c62b11-446b-467d-b232-1da3f219ebe2"/>
+<br />
+
+<p align="center">
+Configurating DHCP - Specifying a DNS
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/71b88da3-e258-428d-a438-fad83ada88a2"/>
+<br />
+
+<p align="center">
+Configurating DHCP - Authorizing Our DHCP Server
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/a53fa4c9-e7b2-43a6-8960-c6919e0990b2"/>
+<br />
 
 
 <h2>Hard Skills Demonstrated </h2>
