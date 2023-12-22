@@ -159,6 +159,124 @@ Configurating DHCP - Authorizing Our DHCP Server
 <img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/a53fa4c9-e7b2-43a6-8960-c6919e0990b2"/>
 <br />
 
+<h1> Powershell: </h1>
+
+Used powershell to programmatically create 1,000 users in Active Directory by interating over a specified .txt file containing auto generated names to create test accounts to login to our "Client" virtual machine with.
+
+```
+# ----- Edit these Variables for your own Use Case ----- #
+$PASSWORD_FOR_USERS   = "Password1"
+$USER_FIRST_LAST_LIST = Get-Content .\users.txt
+# ------------------------------------------------------ #
+
+$password = ConvertTo-SecureString $PASSWORD_FOR_USERS -AsPlainText -Force
+New-ADOrganizationalUnit -Name CREATED_USERS -ProtectedFromAccidentalDeletion $false
+
+foreach ($n in $USER_FIRST_LAST_LIST) {
+    $first = $n.Split(" ")[0].ToLower()
+    $last = $n.Split(" ")[1].ToLower()
+    $username = "$($first.Substring(0,1))$($last)".ToLower()
+    Write-Host "Creating user: $($username)" -BackgroundColor Black -ForegroundColor Cyan
+    
+    New-AdUser -AccountPassword $password `
+               -GivenName $first `
+               -Surname $last `
+               -DisplayName $username `
+               -Description 'Created via a Script' `
+               -Name $username `
+               -EmployeeID $username `
+               -PasswordNeverExpires $true `
+               -Path "ou=CREATED_USERS,$(([ADSI]`"").distinguishedName)" `
+               -Enabled $true
+}
+```
+Temporarily changed the default "Execution Policy" to unrestricted for the purpose of this project and added my own name to the "names.txt" file that will be used by the powershell script to programatically create a test account with my name. 
+
+<p align="center">
+name.txt - Adding my name to the file
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/6f3f8de6-206b-4316-a224-c5ff02942ad5"/>
+<br />
+
+<p align="center">
+Running the Powershell Script - Console Output
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/f400b767-40a1-4e8c-859f-244c173ef199"/>
+<br />
+
+After confirming that the script sucessfully ran we can check ADUC to confirm that all of our users exist in their intended OU='CREATED_USERS'.
+
+<p align="center">
+ADUC - After running the script
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/7ff8b0b5-7f32-4471-b283-6613c613c17f"/>
+<br />
+
+<h1> Client VM: </h1>
+
+Created a client VM in VirtualBox with the configuration shown below and created a local admin account to join the "Client" to our domain.
+
+<p align="center">
+VirtualBox - Client VM Configuration
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/8f367d9a-0ada-43a1-8909-b6e8097406f5"/>
+<br />
+
+By using the internal NIC this allows our "Client" to communicate with our domain controller in order to join the domain.
+
+<p align="center">
+Client VM - Installing Windows 10 Pro
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/8f367d9a-0ada-43a1-8909-b6e8097406f5"/>
+<br />
+
+NOTE: Windows 10 Pro was installed on the Client VM because it's provides us the option of joining a domain which is necessary to join the domain we've created.
+
+<p align="center">
+Client VM - Creating Local Admin Account
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/01a5ee48-8604-4d1c-8d01-d0355d452352"/>
+<br />
+
+After the initial setup of Windows we can navigate to advance system settings to allows us to rename the computers name and join the domain.
+
+<p align="center">
+Client VM - Renaming to 'Client-1' and joining the domain (mydomain.com)
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/4776d162-4148-4bb3-b18d-a61f4e52616f"/>
+<br />
+
+We can now authorize this change with the account: atanco_HDA that we created earlier who is a member of the "Domains Admin" group.
+
+<p align="center">
+Client VM - Successfully joined machine to mydomain.com
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/57f99d11-71f8-4338-aaf0-12bd0b1b3ddd"/>
+<br />
+
+We should now be able to view our newly joined machine in ADUC from our domain controller as confirmation.
+
+<p align="center">
+Domain Controller - Confirming "Client-1" successfully is apart of the domain
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/9c1d2318-b936-4497-8bf0-99cce752d9b7"/>
+<br />
+
+Now that we confirmed that the machine is successfully joined to the domain, we can now finally login as any of the users we programmatically created with our script to ensure everything is working as intended.
+
+<p align="center">
+Client VM - Login as acosey (generatered AD account from our script)
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/f62330da-52a6-4df6-8ea3-61bfba80b375"/>
+<br />
+
+<p align="center">
+Client VM - Login as acosey (running CMD 'whoami' command)
+<br/>
+<img src="https://github.com/AntonioTanco/ActiveDirectoryLab/assets/43735570/d38e65a6-dedf-4d75-8179-cd27725f65b4"/>
+<br />
+
+We can successfully login as any of our auto generated AD accounts we created via our script and we can confirm at this machine is on the domain by running the CMD Command: whoami
 
 <h2>Hard Skills Demonstrated </h2>
 - Windows Server 2019 
